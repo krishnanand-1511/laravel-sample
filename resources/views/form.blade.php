@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{ route('form.submit') }}" method="POST">
+    <form action="/form" method="POST">
         @csrf
         <label>Name:</label>
         <input type="text" name="name" value="{{ old('name') }}"><br><br>

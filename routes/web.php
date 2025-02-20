@@ -48,7 +48,7 @@ Route::get('/form', function () {
     return view('form');
 });
 
-Route::post('/form', [FormController::class, 'showForm'])->name('form.submit');
+Route::post('/form', [FormController::class, 'submitForm']);
 
 
 require __DIR__.'/auth.php';
