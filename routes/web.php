@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +36,19 @@ Route::get('/contact', [MailController::class, 'showForm'])->name('contact.form'
 
 // Handle form submission (POST request)
 Route::post('/contact', [MailController::class, 'sendMail'])->name('submit.mail');
+
+
+Route::get('/upload', function () {
+    return view('upload');
+});
+
+Route::post('/upload', [FileUploadController::class, 'uploadFile'])->name('file.upload');
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+Route::post('/form', [FormController::class, 'showForm'])->name('form.submit');
 
 
 require __DIR__.'/auth.php';
