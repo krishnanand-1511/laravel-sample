@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponses;
 use App\Models\UserMca;
 
 class HelloController extends Controller
@@ -76,11 +77,31 @@ class HelloController extends Controller
 	    }
 	}
 
+    public function ajax(Request $request)
+    {
+        return view('jqueryajax');
+    }
 
+    public function ajaxPost(Request $request):JsonResponses
+    {
+        $validated = $request->validate([
+            "name"=> "required",
+            "email"=>"required|email",
+            "message"=>"required"
+        ]);
 
-    
+        return response()->json(["success"=>"Form submitted Sucessfully"]);
+    }
 
+    public function jsajax(Request $request)
+    {
+        return view('ajax');
+    }
 
+    public function gethint(Request $request)
+    {
+        return $request['q'];
+    }
  
 
 }
