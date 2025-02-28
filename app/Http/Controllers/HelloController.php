@@ -100,7 +100,7 @@ class HelloController extends Controller
 
     public function gethint(Request $request)
     {
-        return $request['q'];
+        return $request['sname'];
     }
  
 

@@ -1,8 +1,10 @@
 <html>
 <head>
 <script>
-function showHint(str) {
-  if (str.length == 0) {
+function showHint() {
+    let collegename = document.getElementById("name").value;
+    let sname = document.getElementById("sname").value;
+  if (collegename.length == 0) {
     document.getElementById("txtHint").innerHTML = "";
     return;
   } else {
@@ -12,7 +14,7 @@ function showHint(str) {
         document.getElementById("txtHint").innerHTML = this.responseText;
       }
     };
-    xmlhttp.open("GET", "gethint?q=" + str, true);
+    xmlhttp.open("GET", "gethint?cname=" + collegename + "&sname="+sname , true);
     xmlhttp.send();
   }
 }
@@ -21,10 +23,15 @@ function showHint(str) {
 <body>
 
 <p><b>Start typing a name in the input field below:</b></p>
-<form action="">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname" onkeyup="showHint(this.value)">
-</form>
+
+  <label for="fname">College name:</label>
+  <input type="text" id="name" name="name" ><br>
+  <label for="fname">Student name:</label>
+  <input type="text" id="sname" name="sname" ><br>
+  <button onclick="showHint()">submit
+  </button>
+  
+
 <p>Suggestions: <span id="txtHint"></span></p>
 </body>
 </html>
